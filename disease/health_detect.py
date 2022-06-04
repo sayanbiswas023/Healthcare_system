@@ -204,8 +204,11 @@ root.bg_image = ImageTk.PhotoImage(image)
 root.image_label =Label(master=root, image=root.bg_image)
 root.image_label.place(relx=0.15, rely=0.92, anchor=CENTER)
 
+
 head_font1=tkFont.Font(family="Times New Roman",size=30,weight="bold",slant="italic")
 head_font2=tkFont.Font(family="Times New Roman",size=20,weight="bold",slant="italic")
+head_font3=tkFont.Font(family="Arial",size=10)
+
 
 # entry variables
 Symptom1 = StringVar()
@@ -337,6 +340,10 @@ predictionLb =customtkinter.CTkLabel(master=root, text="PREDICTION",justify=LEFT
 predictionLb.configure(font=head_font2)
 predictionLb.grid(row=18, column=1)
 
+creditsLb =customtkinter.CTkLabel(master=root, text="Made with love by icecream.",justify=LEFT)
+creditsLb.configure(font=head_font3)
+creditsLb.place(relx=0.5, rely=0.97, anchor=CENTER)
+
 #textfileds
 t1 = Text(root, height=1, width=40,bg="light goldenrod",fg="blue4")
 t1.grid(row=20, column=1, padx=10)
@@ -346,5 +353,6 @@ t2.grid(row=21, column=1 , padx=10)
 
 t3 = Text(root, height=1, width=40,bg="light goldenrod",fg="blue4")
 t3.grid(row=22, column=1 , padx=10)
+
 
 root.mainloop()
