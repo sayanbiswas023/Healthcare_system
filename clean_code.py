@@ -1,10 +1,7 @@
 from tkinter import *
 import numpy as np
 import pandas as pd
-import customtkinter
-from PIL import Image,ImageTk
-import tkinter.font as tkFont
-
+# from gui_stuff import *
 
 l1=['back_pain','constipation','abdominal_pain','diarrhoea','mild_fever','yellow_urine',
 'yellowing_of_eyes','acute_liver_failure','fluid_overload','swelling_of_stomach',
@@ -42,7 +39,7 @@ for x in range(0,len(l1)):
     l2.append(0)
 
 # TESTING DATA df -------------------------------------------------------------------------------------
-df=pd.read_csv("./disease/Training.csv")
+df=pd.read_csv("Training.csv")
 
 df.replace({'prognosis':{'Fungal infection':0,'Allergy':1,'GERD':2,'Chronic cholestasis':3,'Drug Reaction':4,
 'Peptic ulcer diseae':5,'AIDS':6,'Diabetes ':7,'Gastroenteritis':8,'Bronchial Asthma':9,'Hypertension ':10,
@@ -63,7 +60,7 @@ np.ravel(y)
 # print(y)
 
 # TRAINING DATA tr --------------------------------------------------------------------------------
-tr=pd.read_csv("./disease/Testing.csv")
+tr=pd.read_csv("Testing.csv")
 tr.replace({'prognosis':{'Fungal infection':0,'Allergy':1,'GERD':2,'Chronic cholestasis':3,'Drug Reaction':4,
 'Peptic ulcer diseae':5,'AIDS':6,'Diabetes ':7,'Gastroenteritis':8,'Bronchial Asthma':9,'Hypertension ':10,
 'Migraine':11,'Cervical spondylosis':12,
@@ -93,7 +90,7 @@ def DecisionTree():
     print(accuracy_score(y_test, y_pred,normalize=False))
     # -----------------------------------------------------
 
-    psymptoms = [Symptom1.get(),Symptom2.get(),Symptom3.get(),Symptom4.get(),Symptom5.get(),Symptom6.get(),Symptom7.get(),Symptom8.get(),Symptom9.get(),Symptom10.get()]
+    psymptoms = [Symptom1.get(),Symptom2.get(),Symptom3.get(),Symptom4.get(),Symptom5.get()]
 
     for k in range(0,len(l1)):
         # print (k,)
@@ -132,7 +129,7 @@ def randomforest():
     print(accuracy_score(y_test, y_pred,normalize=False))
     # -----------------------------------------------------
 
-    psymptoms = [Symptom1.get(),Symptom2.get(),Symptom3.get(),Symptom4.get(),Symptom5.get(),Symptom6.get(),Symptom7.get(),Symptom8.get(),Symptom9.get(),Symptom10.get()]
+    psymptoms = [Symptom1.get(),Symptom2.get(),Symptom3.get(),Symptom4.get(),Symptom5.get()]
 
     for k in range(0,len(l1)):
         for z in psymptoms:
@@ -169,7 +166,7 @@ def NaiveBayes():
     print(accuracy_score(y_test, y_pred,normalize=False))
     # -----------------------------------------------------
 
-    psymptoms = [Symptom1.get(),Symptom2.get(),Symptom3.get(),Symptom4.get(),Symptom5.get(),Symptom6.get(),Symptom7.get(),Symptom8.get(),Symptom9.get(),Symptom10.get()]
+    psymptoms = [Symptom1.get(),Symptom2.get(),Symptom3.get(),Symptom4.get(),Symptom5.get()]
     for k in range(0,len(l1)):
         for z in psymptoms:
             if(z==l1[k]):
@@ -192,7 +189,6 @@ def NaiveBayes():
         t3.delete("1.0", END)
         t3.insert(END, "Not Found")
 
-
 def StackedModel():
   # Train-Test-Splitting
   from sklearn.model_selection import train_test_split
@@ -202,13 +198,13 @@ def StackedModel():
   # Stacked Model
   from sklearn.naive_bayes import GaussianNB
   from sklearn.ensemble import RandomForestClassifier
-  from sklearn.tree import DecisionTreeClassifier
+  from sklearn import tree
   from vecstack import stacking
   from sklearn.metrics import accuracy_score
   from xgboost import XGBClassifier
   model_1 = GaussianNB()
   model_2 = RandomForestClassifier(random_state=0, n_jobs=-1, n_estimators=100, max_depth=10)
-  model_3 = DecisionTreeClassifier(random_state=0)
+  model_3 = tree.DecisionTreeClassifier(random_state=0)
   all_models = [model_1,model_2,model_3]
 
   for model in all_models:
@@ -283,21 +279,8 @@ def StackedModel():
 
 # gui_stuff------------------------------------------------------------------------------------
 
-WIDTH=700
-HEIGHT=900
-root=customtkinter.CTk()
-root.title("Dhoom Dhadaka Healthcare")
-root.geometry(f"{WIDTH}x{HEIGHT}")
-image = Image.open("./images/bg1.jpg").resize((WIDTH+650, HEIGHT+760))
-root.bg_image = ImageTk.PhotoImage(image)
-root.image_label =Label(master=root, image=root.bg_image)
-root.image_label.place(relx=0.15, rely=0.92, anchor=CENTER)
-
-
-head_font1=tkFont.Font(family="Times New Roman",size=30,weight="bold",slant="italic")
-head_font2=tkFont.Font(family="Times New Roman",size=20,weight="bold",slant="italic")
-head_font3=tkFont.Font(family="Arial",size=10)
-
+root = Tk()
+root.configure(background='blue')
 
 # entry variables
 Symptom1 = StringVar()
@@ -310,77 +293,48 @@ Symptom4 = StringVar()
 Symptom4.set(None)
 Symptom5 = StringVar()
 Symptom5.set(None)
-Symptom6 = StringVar()
-Symptom6.set(None)
-Symptom7 = StringVar()
-Symptom7.set(None)
-Symptom8 = StringVar()
-Symptom8.set(None)
-Symptom9 = StringVar()
-Symptom9.set(None)
-Symptom10 = StringVar()
-Symptom10.set(None)
 Name = StringVar()
 
 # Heading
-# w2 = customtkinter.CTkLabel(master=root, justify=LEFT, text="Disease Predictor using Machine Learning", fg="white", bg="blue")
+# w2 = Label(root, justify=LEFT, text="Disease Predictor using Machine Learning", fg="white", bg="blue")
 # w2.config(font=("Elephant", 30))
 # w2.grid(row=1, column=0, columnspan=2, padx=100)
-# w2 = customtkinter.CTkLabel(master=root, justify=LEFT, text="A Project by Yaswanth Sai Palaghat", fg="white", bg="blue")
+# w2 = Label(root, justify=LEFT, text="A Project by Yaswanth Sai Palaghat", fg="white", bg="blue")
 # w2.config(font=("Aharoni", 30))
 # w2.grid(row=2, column=0, columnspan=2, padx=100)
 
 # labels
-TitleLb =customtkinter.CTkLabel(master=root, text="~ Disease Prediction ~",justify=LEFT)
-TitleLb.configure(font=head_font1)
-TitleLb.grid(row=2, column=1)
-
-NameLb = customtkinter.CTkLabel(master=root, text="Name of the Patient",justify=LEFT,fg_color="dodger blue")
+NameLb = Label(root, text="Name of the Patient", fg="yellow", bg="black")
 NameLb.grid(row=6, column=0, pady=15, sticky=W)
 
 
-S1Lb = customtkinter.CTkLabel(master=root, text="Symptom 1", fg_color="dark slate gray")
+S1Lb = Label(root, text="Symptom 1", fg="yellow", bg="black")
 S1Lb.grid(row=7, column=0, pady=10, sticky=W)
 
-S2Lb = customtkinter.CTkLabel(master=root, text="Symptom 2", fg_color="dark slate gray")
+S2Lb = Label(root, text="Symptom 2", fg="yellow", bg="black")
 S2Lb.grid(row=8, column=0, pady=10, sticky=W)
 
-S3Lb = customtkinter.CTkLabel(master=root, text="Symptom 3", fg_color="dark slate gray")
+S3Lb = Label(root, text="Symptom 3", fg="yellow", bg="black")
 S3Lb.grid(row=9, column=0, pady=10, sticky=W)
 
-S4Lb = customtkinter.CTkLabel(master=root, text="Symptom 4", fg_color="dark slate gray")
+S4Lb = Label(root, text="Symptom 4", fg="yellow", bg="black")
 S4Lb.grid(row=10, column=0, pady=10, sticky=W)
 
-S5Lb = customtkinter.CTkLabel(master=root, text="Symptom 5", fg_color="dark slate gray")
+S5Lb = Label(root, text="Symptom 5", fg="yellow", bg="black")
 S5Lb.grid(row=11, column=0, pady=10, sticky=W)
 
-S6Lb = customtkinter.CTkLabel(master=root, text="Symptom 6", fg_color="dark slate gray")
-S6Lb.grid(row=12, column=0, pady=10, sticky=W)
 
-S7Lb = customtkinter.CTkLabel(master=root, text="Symptom 7", fg_color="dark slate gray")
-S7Lb.grid(row=13, column=0, pady=10, sticky=W)
+lrLb = Label(root, text="DecisionTree", fg="white", bg="red")
+lrLb.grid(row=15, column=0, pady=10,sticky=W)
 
-S8Lb = customtkinter.CTkLabel(master=root, text="Symptom 8", fg_color="dark slate gray")
-S8Lb.grid(row=14, column=0, pady=10, sticky=W)
+destreeLb = Label(root, text="RandomForest", fg="white", bg="red")
+destreeLb.grid(row=17, column=0, pady=10, sticky=W)
 
-S9Lb = customtkinter.CTkLabel(master=root, text="Symptom 9", fg_color="dark slate gray")
-S9Lb.grid(row=15, column=0, pady=10, sticky=W)
+ranfLb = Label(root, text="NaiveBayes", fg="white", bg="red")
+ranfLb.grid(row=19, column=0, pady=10, sticky=W)
 
-S10Lb = customtkinter.CTkLabel(master=root, text="Symptom 10", fg_color="dark slate gray")
-S10Lb.grid(row=16, column=0, pady=10, sticky=W)
-
-
-# lrLb = customtkinter.CTkLabel(master=root, text="DecisionTree", fg_color="DeepSkyBlue4")
-# lrLb.grid(row=20, column=0, pady=10,sticky=W)
-
-# destreeLb = customtkinter.CTkLabel(master=root, text="RandomForest", fg_color="DeepSkyBlue4")
-# destreeLb.grid(row=21, column=0, pady=10, sticky=W)
-
-# ranfLb = customtkinter.CTkLabel(master=root, text="NaiveBayes", fg_color="DeepSkyBlue4")
-# ranfLb.grid(row=22, column=0, pady=10, sticky=W)
-
-stackedLb = customtkinter.CTkLabel(master=root, text="Prediction", fg_color="DeepSkyBlue4")
-stackedLb.grid(row=23, column=0, pady=10, sticky=W)
+stLb = Label(root, text="StackedModel", fg="white", bg="red")
+stLb.grid(row=21, column=0, pady=10, sticky=W)
 
 # entries
 OPTIONS = sorted(l1)
@@ -403,54 +357,30 @@ S4En.grid(row=10, column=1)
 S5En = OptionMenu(root, Symptom5,*OPTIONS)
 S5En.grid(row=11, column=1)
 
-S6En = OptionMenu(root, Symptom6,*OPTIONS)
-S6En.grid(row=12, column=1)
 
-S7En = OptionMenu(root, Symptom7,*OPTIONS)
-S7En.grid(row=13, column=1)
+dst = Button(root, text="DecisionTree", command=DecisionTree,bg="green",fg="yellow")
+dst.grid(row=8, column=3,padx=10)
 
-S8En = OptionMenu(root, Symptom8,*OPTIONS)
-S8En.grid(row=14, column=1)
+rnf = Button(root, text="Randomforest", command=randomforest,bg="green",fg="yellow")
+rnf.grid(row=9, column=3,padx=10)
 
-S9En = OptionMenu(root, Symptom9,*OPTIONS)
-S9En.grid(row=15, column=1)
+lr = Button(root, text="NaiveBayes", command=NaiveBayes,bg="green",fg="yellow")
+lr.grid(row=10, column=3,padx=10)
 
-S10En = OptionMenu(root, Symptom10,*OPTIONS)
-S10En.grid(row=16, column=1)
-
-
-# dst = Button(root, text="DecisionTree", command=DecisionTree,bg="light sea green",fg="yellow")
-# dst.grid(row=8, column=3,padx=10)
-
-# rnf = Button(root, text="Randomforest", command=randomforest,bg="light sea green",fg="yellow")
-# rnf.grid(row=9, column=3,padx=10)
-
-# lr = Button(root, text="NaiveBayes", command=NaiveBayes,bg="light sea green",fg="yellow")
-# lr.grid(row=10, column=3,padx=10)
-
-st = Button(root, text="Predict Disease", command=StackedModel,bg="light sea green",fg="yellow")
+st = Button(root, text="StackedModel", command=StackedModel,bg="green",fg="yellow")
 st.grid(row=11, column=3,padx=10)
 
-predictionLb =customtkinter.CTkLabel(master=root, text="PREDICTION",justify=LEFT)
-predictionLb.configure(font=head_font2)
-predictionLb.grid(row=18, column=1)
-
-creditsLb =customtkinter.CTkLabel(master=root, text="Made with love by icecream.",justify=LEFT)
-creditsLb.configure(font=head_font3)
-creditsLb.place(relx=0.5, rely=0.97, anchor=CENTER)
-
 #textfileds
-# t1 = Text(root, height=1, width=40,bg="light goldenrod",fg="blue4")
-# t1.grid(row=20, column=1, padx=10)
+t1 = Text(root, height=1, width=40,bg="orange",fg="black")
+t1.grid(row=15, column=1, padx=10)
 
-# t2 = Text(root, height=1, width=40,bg="light goldenrod",fg="blue4")
-# t2.grid(row=21, column=1 , padx=10)
+t2 = Text(root, height=1, width=40,bg="orange",fg="black")
+t2.grid(row=17, column=1 , padx=10)
 
-# t3 = Text(root, height=1, width=40,bg="light goldenrod",fg="blue4")
-# t3.grid(row=22, column=1 , padx=10)
+t3 = Text(root, height=1, width=40,bg="orange",fg="black")
+t3.grid(row=19, column=1 , padx=10)
 
-t4 = Text(root, height=1, width=40,bg="light goldenrod",fg="blue4")
-t4.grid(row=23, column=1 , padx=10)
-
+t4 = Text(root, height=1, width=40,bg="orange",fg="black")
+t4.grid(row=21, column=1 , padx=10)
 
 root.mainloop()
