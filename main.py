@@ -26,7 +26,7 @@ def health_detect():
     os.system('python3 ./disease/health_detect.py')
 
 def skin_cancer():
-   pass
+   os.system('python3 ./skin_cancer/skin_model.py')
 
 def emotional_support():
     pass
