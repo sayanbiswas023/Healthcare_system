@@ -3,10 +3,13 @@ import json
 import torch
 from model import NeuralNet
 from nltk_utils import bag_of_words, tokenize
+import nltk
+nltk.download('punkt')
+
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 with open('./Chatbot/intents.json', 'r') as json_data:
     intents = json.load(json_data)
-FILE = "data"
+FILE = "./Chatbot/data"
 data = torch.load(FILE)
 input_size = data["input_size"]
 hidden_size = data["hidden_size"]
@@ -18,6 +21,8 @@ model = NeuralNet(input_size, hidden_size, output_size).to(device)
 model.load_state_dict(model_state)
 model.eval()
 bot_name = "Me4U"
+
+
 def get_response(msg):
     sentence = tokenize(msg)
     X = bag_of_words(sentence, all_words)

@@ -12,6 +12,7 @@ class ChatApplication:
     
     def run(self):
         self.window.mainloop()
+        
     def _setup_main_window(self):
         self.window.title("Chat")
         self.window.resizable(width=False, height=False)

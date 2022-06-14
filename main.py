@@ -29,7 +29,7 @@ def skin_cancer():
    os.system('python3 ./skin_cancer/skin_model.py')
 
 def emotional_support():
-    pass
+    os.system('python3 ./Chatbot/app.py')
 
 TitleLb = customtkinter.CTkLabel(master=window, text="WELCOME TO DHOOM DHADAKA HEALTHCARE", justify=LEFT)
 TitleLb.pack(pady=12, padx=10)

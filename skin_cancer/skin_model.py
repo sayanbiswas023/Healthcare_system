@@ -67,6 +67,7 @@ def click_image():
     yesLb.place(relx=0.9, rely=0.4, anchor=CENTER)
 
 def predict():
+    showoutput.delete('1.0', END)
     prediction=['Benign(Non Cancerous)','Malignant(Cancerous)']
 
     #loading model
