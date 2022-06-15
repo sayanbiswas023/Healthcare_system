@@ -12,6 +12,6 @@
 ## Instructions:
 ### 1. Clone
 ### 2. You'll need model weights...so....
-![alt text](https://memecrunch.com/meme/5KKMD/gimme-da-money)
+![alt text](https://media.makeameme.org/created/gimme-money-or-6f5ba165c2.jpg)
 ### 3. Stay at root and run !pip install -r requirements.txt
 ### 4. Run main.py
