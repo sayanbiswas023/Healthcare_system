@@ -73,7 +73,7 @@ def predict():
     #loading model
     model = build_model(256, 6)
     print("...Model Built...") ##
-    model.load_weights('./skin_cancer/FOLD' + str(5) + '_model.h5')
+    model.load_weights('./skin_cancer/weights' + '.h5')
     print("...Weights Loaded...") ##
 
     #loading image
@@ -82,6 +82,7 @@ def predict():
     img = cv2.resize(img, dsize=(256, 256), interpolation=cv2.INTER_CUBIC)
     img = np.expand_dims(img, axis=0)
 
+    print(img.shape)
     pred = model.predict(img)
     output=prediction[int(pred[0][0])]
 
