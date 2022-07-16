@@ -101,11 +101,11 @@ Put the weights.h5 file in the 'skin_cancer' folder
 ### 1. Home
 ![alt text](https://github.com/sayanbiswas023/Healthcare_system/blob/master/images/home.png?raw=true)
 
-### 2. Chat
+### 2. ChatBot
 ![alt text](https://github.com/sayanbiswas023/Healthcare_system/blob/master/images/chat.png?raw=true)
 
-### 3. Disease
+### 3. Disease Prediction
 ![alt text](https://github.com/sayanbiswas023/Healthcare_system/blob/master/images/disease.png?raw=true)
 
-### 4. Skin
+### 4. Skin Cancer Detection
 ![alt text](https://github.com/sayanbiswas023/Healthcare_system/blob/master/images/skin.png?raw=true)
