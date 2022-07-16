@@ -86,3 +86,18 @@ Put the weights.h5 file in the 'skin_cancer' folder
 	$ pip install -r requirements.txt
 ```
 ### 4. Run main.py
+
+
+##Working Demo:
+
+### 1. Home
+![alt text]()
+
+### 1. Chat
+![alt text]()
+
+### 1. Disease
+![alt text]()
+
+### 1. Skin
+![alt text]()
