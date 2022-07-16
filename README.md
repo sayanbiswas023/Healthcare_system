@@ -9,6 +9,8 @@
 
 ![alt text](https://i.pinimg.com/564x/c2/48/eb/c248eb292cb85b991512c02574723453.jpg)
 
+<hr style="border:10px solid gray">
+
 ## THIS PROJECT INCLUDES: 
 Improving Healthcare Access and Outcomes by integrating the applications of AI for
 1. Primary care
@@ -75,6 +77,9 @@ The user would also get an option for getting mental health support on the same 
 Most of the patients die from negligence as they hesitate to visit a doctor even for the detection of a disease! Early and fast diagnosis of a plausible disease is important. This is where our AI Models and bot would come to rescue. We solely believe the ease of access and usage of this product, can prove to be of service. 
 3. Mental health is the proverbial elephant in the room that no one wants to address. Corona is to blame for this massive spike in the number of cases. Chatbots are Natural Language Processing(NLP) based frameworks that interact with human . Built specifically to communicate with people struggling with mental problems.
 
+<hr style="border:10px solid gray">
+<hr style="border:10px solid gray">
+
 ## Instructions:
 ### 1. Clone
 ### 2. You'll need model weights...so....
@@ -88,16 +93,19 @@ Put the weights.h5 file in the 'skin_cancer' folder
 ### 4. Run main.py
 
 
-##Working Demo:
+<hr style="border:10px solid gray">
+<hr style="border:10px solid gray">
+
+## Working Demo:
 
 ### 1. Home
-![alt text]()
+![alt text](https://github.com/sayanbiswas023/Healthcare_system/blob/master/images/home.png?raw=true)
 
-### 1. Chat
-![alt text]()
+### 2. Chat
+![alt text](https://github.com/sayanbiswas023/Healthcare_system/blob/master/images/chat.png?raw=true)
 
-### 1. Disease
-![alt text]()
+### 3. Disease
+![alt text](https://github.com/sayanbiswas023/Healthcare_system/blob/master/images/disease.png?raw=true)
 
-### 1. Skin
-![alt text]()
+### 4. Skin
+![alt text](https://github.com/sayanbiswas023/Healthcare_system/blob/master/images/skin.png?raw=true)
